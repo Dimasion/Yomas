@@ -1,0 +1,122 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "generator-mas",
+        "scope": null,
+        "escapedName": "generator-mas",
+        "name": "generator-mas",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/dimasion/Documents/Study/Yeomas_test"
+    ]
+  ],
+  "_from": "generator-mas@latest",
+  "_id": "generator-mas@0.0.6",
+  "_inCache": true,
+  "_location": "/generator-mas",
+  "_nodeVersion": "6.11.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/generator-mas-0.0.6.tgz_1510328682866_0.66199632268399"
+  },
+  "_npmUser": {
+    "name": "dimasion",
+    "email": "dimasion2010@gmail.com"
+  },
+  "_npmVersion": "3.10.10",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "generator-mas",
+    "scope": null,
+    "escapedName": "generator-mas",
+    "name": "generator-mas",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/generator-mas/-/generator-mas-0.0.6.tgz",
+  "_shasum": "b3494c52a9f1b0ad88e16ce8614d5521ae3030e5",
+  "_shrinkwrap": null,
+  "_spec": "generator-mas",
+  "_where": "/Users/dimasion/Documents/Study/Yeomas_test",
+  "author": {
+    "name": "Jake Larson",
+    "email": "jake.j.larson@gmail.com",
+    "url": "https://github.com/larsonjj"
+  },
+  "bugs": {
+    "url": "https://github.com/larsonjj/generator-yeogurt/issues"
+  },
+  "dependencies": {
+    "colors": "~0.6.2",
+    "lodash": "~2.4.1",
+    "rimraf": "2.2.8",
+    "yeoman-generator": "~0.17.7"
+  },
+  "description": "A generator for creating static sites. Helps you harness the power of your favorite tools: Jade or Nunjucks, Gulp, ES6/2015, and much more!",
+  "devDependencies": {
+    "babel-eslint": "^3.1.19",
+    "coveralls": "~2.11.2",
+    "eslint": "~0.24.0",
+    "fixture-stdout": "~0.2.1",
+    "istanbul": "~0.3.6",
+    "mocha": "~2.1.0",
+    "mocha-lcov-reporter": "~0.0.2",
+    "os": "^0.1.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "b3494c52a9f1b0ad88e16ce8614d5521ae3030e5",
+    "tarball": "https://registry.npmjs.org/generator-mas/-/generator-mas-0.0.6.tgz"
+  },
+  "engines": {
+    "node": ">=4.0.0",
+    "npm": ">=2.15.0"
+  },
+  "homepage": "https://github.com/larsonjj/generator-yeogurt",
+  "keywords": [
+    "yeoman-generator",
+    "yeogurt",
+    "frontend",
+    "html5",
+    "jade",
+    "static site",
+    "static",
+    "nunjucks",
+    "sass",
+    "browsersync",
+    "less",
+    "browserify"
+  ],
+  "license": "MIT",
+  "main": "app/index.js",
+  "maintainers": [
+    {
+      "name": "dimasion",
+      "email": "dimasion2010@gmail.com"
+    }
+  ],
+  "name": "generator-mas",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/larsonjj/generator-yeogurt.git"
+  },
+  "scripts": {
+    "clean": "rimraf node_modules coverage test/app/temp test/subgenerators/temp",
+    "localtest": "mocha test/app/*.test.js test/subgenerators/*.test.js -b --reporter spec",
+    "localtest-report": "istanbul cover _mocha test/app/*.test.js test/subgenerators/*.test.js && open ./coverage/lcov-report/index.html",
+    "postversion": "git push && git push --tags",
+    "preversion": "npm test",
+    "test": "istanbul cover _mocha -- test/app/*.test.js test/subgenerators/*.test.js --reporter list --timeout 100000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  },
+  "version": "0.1.0"
+}

@@ -1,0 +1,10 @@
+//- ---------------------------------------------
+//- <%= atomic ? atomic + ': ' + name.toLowerCase() : name.toLowerCase() %> [template] 
+//- Created by <%= user %> <%= 
+    new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes()
+    %>
+//- ---------------------------------------------
+mixin <%= name.toLowerCase() %>(spec)
+
+  div(class=spec.class).<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%>&attributes(attributes)
+    div This is an example div for the <%= name.toLowerCase() %> module

@@ -32,7 +32,9 @@ var gulpFiles = function gulpFiles() {
     }
   }
   else {
-    this.template('gulp/es6/scripts.js', 'gulp/browserify.js');
+    this.template('gulp/es6/svg.js', 'gulp/svg.js');
+    this.template('gulp/es6/libraries.js', 'gulp/libraries.js');
+    this.template('gulp/es6/scripts.js', 'gulp/scripts.js');
     this.template('gulp/es6/browserSync.js', 'gulp/browserSync.js');
     this.template('gulp/es6/clean.js', 'gulp/clean.js');
     this.template('gulp/es6/copy.js', 'gulp/copy.js');

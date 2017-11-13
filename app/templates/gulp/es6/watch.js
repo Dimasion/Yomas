@@ -42,6 +42,16 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         path.join(dirs.source, dirs.modules, '**/*.js')
       ], ['scripts']);
 
+      // Libraries
+      gulp.watch([
+        path.join(dirs.source, dirs.libraries, '**/*.js')
+      ], ['libraries']);
+
+      // Icons
+      gulp.watch([
+        path.join(dirs.source, dirs.icons, '*.svg')
+      ], ['svg-icons']);
+      
       // Copy
       gulp.watch([
         path.join(dirs.source, '**/*'),

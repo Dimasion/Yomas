@@ -3,7 +3,7 @@ mixin link(spec)
   - spec.__class = spec.__class || ''
   - spec.text = spec.text || 'Default Link'
 
-  a.link(class=spec.__class)&attributes(attributes)
+  a.link(class=spec.__class).js-link&attributes(attributes)
     if block
       block
     else

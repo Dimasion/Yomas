@@ -54,7 +54,9 @@ gulp.task('build', [
   'less'<% } else if (cssOption === 'sass') { %>,
   'sass'<% } else if (cssOption === 'stylus') { %>,
   'stylus'<% } %>,
-  'scripts'
+  'scripts',
+  'svg-icons',
+  'libraries'
 ]);
 
 // Server tasks with watch
@@ -67,6 +69,8 @@ gulp.task('serve', [
   'sass'<% } %><% if (cssOption === 'stylus') { %>,
   'stylus'<% } %>,
   'scripts',
+  'svg-icons',
+  'libraries',
   'browserSync',
   'watch'
 ]);

@@ -5,6 +5,8 @@
     %>
 //- ---------------------------------------------
 mixin <%= name.toLowerCase() %>(spec)
-
+  - spec = spec || {}
+  - spec.class = spec.class || ''
+  
   div(class=spec.class).<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%>&attributes(attributes)
     div This is an example div for the <%= name.toLowerCase() %> module

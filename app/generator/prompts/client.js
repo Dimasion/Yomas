@@ -17,7 +17,8 @@ var clientPrompts = function clientPrompts() {
     type: 'list',
     name: 'htmlOption',
     message: 'Which ' + 'HTML preprocessor'.blue + ' would you like to use?',
-    choices: ['Jade', 'Nunjucks'],
+    // choices: ['Jade', 'Nunjucks'],
+    choices: ['Jade'],
     filter: function(val) {
       var filterMap = {
         'Jade': 'jade',
@@ -30,7 +31,8 @@ var clientPrompts = function clientPrompts() {
     type: 'list',
     name: 'jsPreprocessor',
     message: 'What ' + 'JavaScript preprocessor'.blue + ' would you like to use?',
-    choices: ['None', 'ES6 (Using Babel)'],
+    // choices: ['None', 'ES6 (Using Babel)'],
+    choices: ['ES6 (Using Babel)'],
     filter: function(val) {
       var filterMap = {
         'None': 'none',
@@ -43,7 +45,8 @@ var clientPrompts = function clientPrompts() {
     type: 'list',
     name: 'cssOption',
     message: 'What would you like to use to ' + 'write styles'.blue + '?',
-    choices: ['Sass', 'Less', 'Stylus'],
+    // choices: ['Sass', 'Less', 'Stylus'],
+    choices: ['Sass'],
     filter: function(val) {
       var filterMap = {
         'Sass': 'sass',
@@ -60,7 +63,8 @@ var clientPrompts = function clientPrompts() {
     type: 'list',
     name: 'sassSyntax',
     message: 'What ' + 'Sass syntax'.blue + ' would you like to use ?',
-    choices: ['Scss', 'Sass'],
+    // choices: ['Scss', 'Sass'],
+    choices: ['Scss'],
     filter: function(val) {
       var filterMap = {
         'Scss': 'scss',

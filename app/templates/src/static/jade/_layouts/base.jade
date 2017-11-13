@@ -1,8 +1,11 @@
+include main
+
 //- Custom Configuration
 block config
   //- Setup site's base URL to match the "baseUrl" key within `package.json`
   //- Otherwise default to relative pathing
   - var baseUrl = config.baseUrl || './'
+  - var page = config.page || 'main'
 
 doctype html
 <html class='no-js' lang='en'>
@@ -11,12 +14,12 @@ head
   meta(charset='utf-8')
   meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
   title <%= projectName %>
-  meta(name='description', content= 'A new Yeogurt application')
-  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(name='description', content= '<%= projectName %> website')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=no')
   block stylesheets
     link(rel='stylesheet', href= baseUrl + 'styles/main.css')
 
-body
+body(data-page=page)
   <!--[if lt IE 11]>
   <p class='browsehappy'>You are using an <strong>outdated</strong> browser. Please <a href='http://browsehappy.com/'>upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
@@ -24,6 +27,7 @@ body
   block content
 
   block scripts
+    script(src= baseUrl + 'scripts/libraries/jquery.min.js')
     script(src= baseUrl + 'scripts/main.js')
 
 </html>

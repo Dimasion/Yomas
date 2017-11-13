@@ -16,7 +16,15 @@ var styleFiles = function styleFiles() {
     }
     else {
       this.template('src/shared/_styles/main.scss', 'src/_styles/main.scss');
-      this.template('src/shared/_styles/link/link.scss', 'src/_modules/link/link.scss');
+      this.template('src/shared/_styles/link/link.scss', 'src/_modules/atoms/link/link.scss');
+      this.template('src/shared/_styles/includes/bootstrap-grid.scss', 'src/_styles/includes/bootstrap-grid.scss');
+      this.template('src/shared/_styles/settings/_layout.scss', 'src/_styles/settings/_layout.scss');
+      this.template('src/shared/_styles/settings/_typography.scss', 'src/_styles/settings/_typography.scss');
+      this.template('src/shared/_styles/settings/_variables.scss', 'src/_styles/settings/_variables.scss');
+      this.template('src/shared/_styles/settings/_fonts.scss', 'src/_styles/settings/_fonts.scss');
+      this.template('src/shared/_styles/settings/_mixins.scss', 'src/_styles/settings/_mixins.scss');
+      this.template('src/shared/_styles/settings/_media.scss', 'src/_styles/settings/_media.scss');
+      this.template('src/shared/_styles/settings/_forms.scss', 'src/_styles/settings/_forms.scss');
     }
   }
   if (this.cssOption === 'stylus') {

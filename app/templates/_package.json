@@ -49,6 +49,9 @@
     "gulp-sass": "~3.1.0",<% } %><% if (cssOption === 'less') { %>
     "gulp-less": "~3.3.0",<% } %><% if (cssOption === 'stylus') { %>
     "gulp-stylus": "~2.6.0",<% } %>
+    "gulp-svgstore": "^6.1.0",
+    "gulp-inject": "^4.2.0",
+    "gulp-rename": "^1.2.2",
     "js-yaml": "~3.8.1",
     "watchify": "~3.9.0 ",
     "browserify" : "~14.1.0"<% if (testFramework !== 'none') { %>,
@@ -89,8 +92,10 @@
       "modules": "_modules",
       "layouts": "_layouts",
       "images": "_images",
+      "icons": "_icons",
       "styles": "_styles",
       "scripts": "_scripts",
+      "libraries": "_scripts/libraries",
       "data": "_data"
     },
     "//": "Entry files",

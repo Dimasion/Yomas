@@ -17,7 +17,8 @@ var testingPrompts = function testingPrompts() {
     type: 'list',
     name: 'testFramework',
     message: 'Which JavaScript ' + 'testing framework'.blue + ' would you like to use?',
-    choices: ['Jasmine', 'Mocha', 'None'],
+    // choices: ['Jasmine', 'Mocha', 'None'],
+    choices: ['None'],
     filter: function(val) {
       var filterMap = {
         'Jasmine': 'jasmine',

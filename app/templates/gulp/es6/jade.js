@@ -60,7 +60,7 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
       locals: {
         config: config,
         debug: true,
-        icon: (name) => fs.readFileSync(path.join(dirs.source, `_icons/${name}.svg`)),
+        icon: (name) => fs.readFileSync(path.join(dirs.source, `_svg/${name}.svg`)),
         site: {
           data: siteData
         }

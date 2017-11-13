@@ -1,0 +1,6 @@
+mixin icon(spec)
+  - spec = spec || {}
+  - spec.class = spec.class || ''
+
+  svg(class=spec.class)
+   use(xlink:href=baseUrl + 'img/sprite.svg#icon-' + spec.icon)

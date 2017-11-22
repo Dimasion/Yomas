@@ -1,0 +1,13 @@
+mixin checkbox(spec)
+  - spec = spec || {}
+  - spec.class = spec.class || ''
+  
+  label(class=spec.class for=spec.id).a-checkbox&attributes(attributes)
+    input(id=spec.id type="checkbox" name=spec.name).a-checkbox__input
+    span.a-checkbox__box
+      +icon({
+        class: 'a-checkbox__icon',
+        icon: 'yomas'
+      })
+    if (spec.text)
+      span.a-checkbox__text= spec.text

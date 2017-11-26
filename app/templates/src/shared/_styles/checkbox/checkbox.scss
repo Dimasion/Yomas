@@ -1,0 +1,37 @@
+$c-box: #000;
+$c-icon: #fff;
+
+.a-checkbox {
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  &__input {
+    display: none;
+  }
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25px;
+    height: 25px;
+    background: $c-box;
+  }
+  &__icon {
+    fill: $c-icon;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
+    transition: opacity $t-normal;
+  }
+  &__text {
+    margin-left: 5px;
+    user-select: none;
+  }
+  // Checked state
+  &__input:checked + .a-checkbox__box {
+    .a-checkbox__icon {
+      opacity: 1;
+    }
+  }
+}

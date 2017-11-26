@@ -8,6 +8,13 @@ block content
       !=icon('yomas')
       //- From sprite include
       +icon({ class: 'additional-class', icon: 'yomas' })
+
+      //- Checkbox
+      +checkbox({
+        id: 'chk-1',
+        name: 'yomas',
+        text: 'Some text'
+      })
       p.
         Take a look at the
         #[+link({text: 'documentation'})(href='https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---')]

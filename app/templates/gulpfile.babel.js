@@ -56,7 +56,7 @@ gulp.task('build', [
   'stylus'<% } %>,
   'scripts',
   'svg-icons',
-  'libraries'
+  'vendor'
 ]);
 
 // Server tasks with watch
@@ -70,7 +70,7 @@ gulp.task('serve', [
   'stylus'<% } %>,
   'scripts',
   'svg-icons',
-  'libraries',
+  'vendor',
   'browserSync',
   'watch'
 ]);

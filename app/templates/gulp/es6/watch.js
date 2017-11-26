@@ -43,10 +43,10 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         path.join(dirs.source, dirs.modules, '**/*.js')
       ], ['scripts']);
 
-      // Libraries
+      // Vendor
       gulp.watch([
-        path.join(dirs.source, dirs.libraries, '**/*.js')
-      ], ['libraries']);
+        path.join(dirs.source, dirs.scripts, 'vendor.js')
+      ], ['vendor']);
 
       // Icons
       gulp.watch([

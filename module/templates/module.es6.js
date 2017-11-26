@@ -5,7 +5,10 @@ new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYea
 %>
 //---------------------------------------------
 export let <%= _.classify(name.toLowerCase()) %> = {
+  dom: {
+    '<%= name.toLowerCase() %>': '.js-<%= name.toLowerCase() %>'
+  },
   init () {
 
   }
-};
+}

@@ -3,6 +3,7 @@
 var path = require('path');
 var yeoman = require('yeoman-generator');
 var _ = require('lodash');
+var moment = require('moment');
 var grabFiles = require('./helpers/grabFiles');
 require('colors');
 

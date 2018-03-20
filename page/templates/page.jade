@@ -3,7 +3,7 @@ extends ../<%= layoutDir %>/<%= layout %>
 block config
   //- Correct base url pathing for this page
   - var baseUrl = '../'
-  - var currentPage = <%= name.toLowerCase() %>
+  - var currentPage = '<%= name.toLowerCase() %>'
 
 block content
   p <%= name.toLowerCase() %> page

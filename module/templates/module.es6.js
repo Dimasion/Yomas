@@ -1,12 +1,10 @@
 //---------------------------------------------
 // <%= atomic ? atomic + ': ' + name.toLowerCase() : name.toLowerCase() %> [script] 
-// Created by <%= user %> <%= 
-new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes()
-%>
+// Created by <%= user %> <%= moment().format('LLLL) %>
 //---------------------------------------------
 export let <%= _.classify(name.toLowerCase()) %> = {
   dom: {
-    '<%= name.toLowerCase() %>': '.js-<%= name.toLowerCase() %>'
+    <%= _.camelize(name.toLowerCase()) %>: '.js-<%= name.toLowerCase() %>'
   },
   init () {
 

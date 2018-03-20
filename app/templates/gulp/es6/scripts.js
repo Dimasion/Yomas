@@ -33,6 +33,10 @@ export default function(gulp, plugins, args, config, taskTarget, browserSync) {
         })
       ]
     })
+    .on( 'error', function( err ) {
+      console.log( 'Error: ' + err.message )
+      this.emit( 'end' )
+    })
     // point to the entry file.
     .pipe(source('app.js', dirs.source, dirs.scripts))
     

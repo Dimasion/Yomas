@@ -27,16 +27,16 @@ var answersConfig = function answersConfig() {
   this.projectName = this.answers.projectName;
 
   // Client
-  this.htmlOption = this.answers.htmlOption;
+  this.htmlOption = 'jade';
   this.jsFramework = this.answers.jsFramework;
   this.jsOption = this.answers.jsOption;
-  this.jsPreprocessor = this.answers.jsPreprocessor;
-  this.cssOption = this.answers.cssOption;
-  this.sassSyntax = this.answers.sassSyntax;
+  this.jsPreprocessor = 'es6';
+  this.cssOption = 'sass';
+  this.sassSyntax = 'scss';
   this.extras = this.answers.extras;
 
   // Default to mocha for testing (cannot use jasmine server-side)
-  this.answers.testFramework = this.answers.testFramework || 'mocha';
+  this.answers.testFramework = this.answers.testFramework || 'none';
 
   // Testing
   this.testFramework = this.answers.testFramework;

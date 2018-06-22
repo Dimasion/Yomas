@@ -18,6 +18,7 @@ var styleFiles = function styleFiles() {
       this.template('src/shared/_styles/main.scss', 'src/_styles/main.scss');
       this.template('src/shared/_styles/link/link.scss', 'src/_modules/atoms/link/link.scss');
       this.template('src/shared/_styles/checkbox/checkbox.scss', 'src/_modules/atoms/forms/checkbox/checkbox.scss');
+      this.template('src/shared/_styles/includes/normalize.scss', 'src/_styles/includes/normalize.scss');
       this.template('src/shared/_styles/includes/bootstrap-grid.scss', 'src/_styles/includes/bootstrap-grid.scss');
       this.template('src/shared/_styles/settings/_layout.scss', 'src/_styles/settings/_layout.scss');
       this.template('src/shared/_styles/settings/_typography.scss', 'src/_styles/settings/_typography.scss');

@@ -1,9 +1,7 @@
-//---------------------------------------------
-// <%= atomic ? atomic + ': ' + name.toLowerCase() : name.toLowerCase() %> [styles] 
-// Created by <%= user %> <%= 
-new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes()
-%>
-//---------------------------------------------
+// <%= atomic ? _.capitalize(atomic) + ': ' + name.toLowerCase() : name.toLowerCase() %> [styles] 
+
 .<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%> {
   position: relative;
 }
+
+// Created by <%= user %> <%= new Date().toLocaleDateString() %>

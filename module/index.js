@@ -103,7 +103,6 @@ ModuleGenerator.prototype.files = function files() {
   if (this.abort) {
     return;
   }
-
   var htmlSuffix = (this.htmlOption === 'jade') ? '.jade' : '.nunjucks';
   var jsSuffix = (this.jsPreprocessor === 'none') ? '.js' : '.es6.js';
   var cssSuffix = _getCssSuffix(this.cssOption, this.sassSyntax);

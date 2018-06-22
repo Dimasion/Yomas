@@ -1,12 +1,8 @@
-//- ---------------------------------------------
-//- <%= atomic ? atomic + ': ' + name.toLowerCase() : name.toLowerCase() %> [template] 
-//- Created by <%= user %> <%= 
-    new Date().getDate() + '.' + new Date().getMonth() + '.' + new Date().getFullYear() + ' ' + new Date().getHours() + ':' + new Date().getMinutes()
-    %>
-//- ---------------------------------------------
+//- <%= atomic ? _.capitalize(atomic) + ': ' + name.toLowerCase() : name.toLowerCase() %> [template] 
+
 mixin <%= name.toLowerCase() %>(spec)
-  - spec = spec || {}
-  - spec.class = spec.class || ''
   
-  div(class=spec.class).<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%>&attributes(attributes)
+  div.<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%>&attributes(attributes)
     div This is an example div for the <%= name.toLowerCase() %> module
+
+//- Created by <%= user %> <%= new Date().toLocaleDateString() %>

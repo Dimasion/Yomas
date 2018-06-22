@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "colors": "~0.6.2",
-    "lodash": "~2.4.1",
+    "lodash": "^2.4.2",
     "moment": "^2.21.0",
     "rimraf": "2.2.8",
     "yeoman-generator": "~0.17.7"
@@ -119,5 +119,5 @@
     "preversion": "npm test",
     "test": "istanbul cover _mocha -- test/app/*.test.js test/subgenerators/*.test.js --reporter list --timeout 100000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
-  "version": "0.3.8"
+  "version": "0.4.52"
 }

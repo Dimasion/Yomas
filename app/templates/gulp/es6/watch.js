@@ -1,91 +1,59 @@
-'use strict';
+'use strict'
 
-import path from 'path';
+import path from 'path'
+import watch from 'gulp-watch'
 
 export default function(gulp, plugins, args, config, taskTarget, browserSync) {
-  let dirs = config.directories;
-  let runSequence  = require( 'run-sequence' ).use( gulp );
+  let dirs = config.directories
+  let runSequence  = require( 'run-sequence' ).use( gulp )
 
   // Watch task
   gulp.task('watch', () => {
-    if (!args.production) {<% if (cssOption === 'sass') { %>
-      // Styles
+    if (!args.production) {
+      // Copy
       gulp.watch([
-        path.join(dirs.source, dirs.styles, '**/*.{scss,sass}'),
-        path.join(dirs.source, dirs.modules, '**/*.{scss,sass}')
-      ], () => {
-        runSequence( 'sass', browserSync.reload );
-      });<% } else if (cssOption === 'less') { %>
-      gulp.watch([
-        path.join(dirs.source, dirs.styles, '**/*.less'),
-        path.join(dirs.source, dirs.modules, '**/*.less'),
-      ], ['less']);<% } else if (cssOption === 'stylus') { %>
-      gulp.watch([
-        path.join(dirs.source, dirs.styles, '**/*.styl'),
-        path.join(dirs.source, dirs.modules, '**/*.styl')
-      ], ['stylus']);
-      <% } %><% if (htmlOption === 'jade') { %>
-
-      // Jade Templates
-      gulp.watch([
+        path.join(dirs.source, '**/*'),
+        '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}'),
+        '!' + path.join(dirs.source, '**/*.jade')
+      ], ['copy'])
+      watch([
         path.join(dirs.source, '**/*.jade'),
         path.join(dirs.source, dirs.svg, '**/*.svg'),
         path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
-      ], () => {
-        runSequence( 'jade', browserSync.reload );
-      });<% } else if (htmlOption === 'nunjucks') { %>
+      ], () => gulp.start('jade'))
 
-      // Nunjucks Templates
-      gulp.watch([
-        path.join(dirs.source, '**/*.nunjucks'),
-        path.join(dirs.source, dirs.data, '**/*.{json,yaml,yml}')
-      ], ['nunjucks']);
-      <% } %>
+      // Styles
+      watch([
+        path.join(dirs.source, dirs.styles, '**/*.{scss,sass}'),
+        path.join(dirs.source, dirs.modules, '**/*.{scss,sass}')
+      ], () => gulp.start('sass'))
 
       // Scripts
-      gulp.watch([
+      watch([
         path.join(dirs.source, dirs.scripts, '**/*.js'),
         path.join(dirs.source, dirs.modules, '**/*.js')
-      ], () => {
-        runSequence( 'scripts', browserSync.reload );
-      });
+      ], () => runSequence( 'scripts', browserSync.reload ))
 
       // Vendor
       gulp.watch([
         path.join(dirs.source, dirs.scripts, 'vendor.js')
-      ], () => {
-        runSequence( 'vendor', browserSync.reload );
-      });
+      ], ['vendor'])
 
       // Icons
       gulp.watch([
         path.join(dirs.source, dirs.icons, '*.svg')
-      ], () => {
-        runSequence( 'svg-icons', browserSync.reload );
-      });
-      
-      // Copy
-      gulp.watch([
-        path.join(dirs.source, '**/*'),
-        '!' + path.join(dirs.source, '{**/\_*,**/\_*/**}')<% if (htmlOption === 'nunjucks') { %>,
-        '!' + path.join(dirs.source, '**/*.nunjucks')<% } else if (htmlOption === 'jade') { %>,
-        '!' + path.join(dirs.source, '**/*.jade')<% } %>
-      ], () => {
-        runSequence( 'copy', browserSync.reload );
-      });
+      ], ['svg-icons'])
 
       // Images
       gulp.watch([
         path.join(dirs.source, dirs.images, '**/*.{jpg,jpeg,gif,svg,png}')
-      ], () => {
-        runSequence( 'imagemin', browserSync.reload );
-      });
+      ], ['imagemin'])
 
       // All other files
       gulp.watch([
         path.join(dirs.temporary, '**/*'),
         '!' + path.join(dirs.temporary, '**/*.{css,map,html,js}')
-      ]).on('change', browserSync.reload);
+      ]).on('change', browserSync.reload)
     }
-  });
+  })
 }

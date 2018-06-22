@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/larsonjj/generator-yeogurt/master/docs/images/logo.png" />
+  <img src="https://raw.githubusercontent.com/Dimasion/Yomas/master/docs/images/logo.png" />
 </p>
 
 # Yomas Generator [![Build Status](https://secure.travis-ci.org/larsonjj/generator-yeogurt.png?branch=master)](https://travis-ci.org/larsonjj/generator-yeogurt) [![NPM version](https://badge.fury.io/js/generator-yeogurt.png)](http://badge.fury.io/js/generator-yeogurt) [![Coverage Status](https://coveralls.io/repos/larsonjj/generator-yeogurt/badge.png)](https://coveralls.io/r/larsonjj/generator-yeogurt)
@@ -48,7 +48,7 @@ This generator utilizes [Yeoman](http://yeoman.io/) and [Gulp](http://gulpjs.com
 There are a few dependencies that this project relies on:
 
 > NOTE: For OSX users
-> You may have some issues compiling code during installation of packages. Please install Xcode from App Store first. After Xcode is installed, 
+> You may have some issues compiling code during installation of packages. Please install Xcode from App Store first. After Xcode is installed,
 open Xcode and go to ***Preferences -> Download -> Command Line Tools -> Install*** to install command line tools.
 
 > NOTE: For Windows users
@@ -65,7 +65,7 @@ Once you have Node installed, make sure you have these tools by opening up a ter
 | `yo --version`  | at or above `v1.2.1`
 | `gulp -v` | `gulp-cli` at or above `v0.3.9`
 
-If you get any errors and/or you're version(s) are too low, you should run `npm install -g yo gulp`. 
+If you get any errors and/or you're version(s) are too low, you should run `npm install -g yo gulp`.
 This will install both tools and update them to their latest versions.
 
 
@@ -98,7 +98,7 @@ yo mas --skip-install
 
 Follow all the prompts and choose what suits you most for the project you would like to create. When you finish with all of the prompts, your project scaffold will be created and all dependencies will be installed.
 
-> NOTE: If you used the `--skip-install` option, no dependencies will have been installed and your gulp tasks will NOT work. 
+> NOTE: If you used the `--skip-install` option, no dependencies will have been installed and your gulp tasks will NOT work.
 You will need to run `npm install` in your project's root directory in order to get started running automated tasks
 
 Once everything is installed, you will see a project structure like below:
@@ -369,7 +369,7 @@ src/contact/index.{jade,nunjucks}
 ## Guides
 
 ### Adding third-party libraries
-Odds are that you will need to add some third party libraries to your project at some point. 
+Odds are that you will need to add some third party libraries to your project at some point.
 To do so, it is strongly recommended that you install them using [NPM](http://npmjs.com/):
 
 ```
@@ -608,7 +608,7 @@ Run the following command:
 svn propset svn:ignore -R -F .svnignore .
 ```
 
-This command will go through your newly created `.svnignore` file and set the specified files/folders to be ignored by SVN. 
+This command will go through your newly created `.svnignore` file and set the specified files/folders to be ignored by SVN.
 
 
 ## Common Issues
@@ -617,7 +617,7 @@ This command will go through your newly created `.svnignore` file and set the sp
 ##### Typical error message:
 > jQuery is not defined
 
-When adding third-party scripts, you should always import them to your `_scripts/main.js` file (See [Adding third-party libraries](#adding-third-party-libraries)). 
+When adding third-party scripts, you should always import them to your `_scripts/main.js` file (See [Adding third-party libraries](#adding-third-party-libraries)).
 However, if you [shimmed](#using-non-commonjs-modules-with-browserify-shim) the library/package to be global (ex: window.jQuery), ESLint will not know that your new library is defined globally. Thus, giving you errors.
 
 ##### Solution

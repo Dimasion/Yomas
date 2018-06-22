@@ -2,9 +2,20 @@
   <img src="https://raw.githubusercontent.com/Dimasion/Yomas/master/docs/images/logo.jpg" />
 </p>
 
-# Yomas Generator [![Build Status](https://secure.travis-ci.org/larsonjj/generator-yeogurt.png?branch=master)](https://travis-ci.org/larsonjj/generator-yeogurt) [![NPM version](https://badge.fury.io/js/generator-yeogurt.png)](http://badge.fury.io/js/generator-yeogurt) [![Coverage Status](https://coveralls.io/repos/larsonjj/generator-yeogurt/badge.png)](https://coveralls.io/r/larsonjj/generator-yeogurt)
+# Yomas Generator [![npm version](https://badge.fury.io/js/generator-mas.svg)](https://badge.fury.io/js/generator-mas)
 
-A generator for creating static sites. Helps you harness the power of your favorite tools: [Jade](http://jade-lang.com/) or [Nunjucks](https://mozilla.github.io/nunjucks/), [Gulp](http://gulpjs.com), ES6/2015, and much more!
+Yomas generator based on Yeogurt generator.
+Changes:
+- Selected one stack of technologies
+- Modified jade mixin syntax
+- Changed modules design
+- Added SVG sprite system
+- Ability to add colorful SVG icons
+
+A generator for creating static sites. Helps you harness the power of your favorite tools:
+- [Jade](http://jade-lang.com/)
+- [Gulp](http://gulpjs.com)
+- [ES6/2015](http://gulpjs.com)
 
 # Table of Contents
 
@@ -266,7 +277,7 @@ $ yo mas:page contact
 Produces:
 
 ```
-src/contact/index.{jade,nunjucks}
+src/contact/index.jade
 ```
 
 #### Example #2: Specifying a layout
@@ -279,7 +290,7 @@ Produces:
 
 ```
 // Page that extends from 'src/_layouts/one-col'
-src/contact/index.{jade,nunjucks}
+src/contact/index.jade
 ```
 
 > NOTE: Pages will default to extending from `src/_layouts/base` if `--layout` is not provided
@@ -296,10 +307,9 @@ $ yo mas:module header
 Produces:
 
 ```
-src/_modules/header/header.{jade,nunjucks}
-src/_modules/header/header.{scss,sass,less,styl}
+src/_modules/header/header.jade
+src/_modules/header/header.scss
 src/_modules/header/header.js
-src/_modules/header/__tests__/header.test.js
 ```
 
 #### Example #2: Specifying module as atomic
@@ -313,10 +323,9 @@ $ yo mas:module link --atomic=atom
 Produces:
 
 ```
-src/_modules/atoms/link/link.{jade,nunjucks}
-src/_modules/atoms/link/link.{scss,sass,less,styl}
+src/_modules/atoms/link/link.jade
+src/_modules/atoms/link/link.scss
 src/_modules/atoms/link/link.js
-src/_modules/atoms/link/__tests__/link.test.js
 ```
 
 > NOTE: Possible `--atomic` options: atom, molecule, organism
@@ -330,10 +339,9 @@ $ yo mas:module some/cool/link --atomic=atom
 Produces:
 
 ```
-src/_modules/atoms/some/cool/link/link.{jade,nunjucks}
-src/_modules/atoms/some/cool/link/link.{scss,sass,less,styl}
+src/_modules/atoms/some/cool/link/link.jade
+src/_modules/atoms/some/cool/link/link.scss
 src/_modules/atoms/some/cool/link/link.js
-src/_modules/atoms/some/cool/link/__tests__/link.test.js
 ```
 
 ### Layout
@@ -348,7 +356,7 @@ $ yo mas:layout one-col
 Produces:
 
 ```
-src/_layouts/one-col.{jade,nunjucks}
+src/_layouts/one-col.jade
 ```
 
 #### Example #2: Specifying another layout to extend from
@@ -361,7 +369,7 @@ Produces:
 
 ```
 // Layout that extends from 'src/_layouts/one-col'
-src/contact/index.{jade,nunjucks}
+src/contact/index.jade
 ```
 
 > NOTE: Layouts will default to extending from 'src/_layouts/base'
@@ -383,26 +391,14 @@ Once installed, you can access scripts within your JavaScript files like so:
 ```js
 // Example using jquery
 
-// ES5
-var $ = require('jquery');
-
-$(function() {
-  console.log('Hello');
-});
-
-// ES6/2015
 import $ from 'jquery';
 
-$(() => {
-  console.log('Hello');
-});
+console.log('jQuery imported: ', $);
 ```
 
 #### Stylesheets
 
-You can also access stylesheets by importing them to you chosen preprocessor like so:
-
-**Using SCSS:**
+You can also access stylesheets by importing like so:
 
 ```scss
 // SCSS
@@ -411,143 +407,6 @@ You can also access stylesheets by importing them to you chosen preprocessor lik
 // CSS
 @import 'node_modules/normalize.css/normalize';
 ```
-
-**Using SASS:**
-
-```sass
-// SASS
-@import node_modules/bootstrap-sass-official/scss/bootstrap
-
-// CSS
-@import node_modules/normalize.css/normalize
-```
-
-**Using LESS:**
-
-```less
-// LESS
-@import 'node_modules/bootstrap/less/bootstrap';
-
-// CSS
-@import (inline) 'node_modules/normalize.css/normalize.css';
-```
-
-**Using Stylus:**
-
-```stylus
-// Stylus
-@import '../../node_modules/bootstrap-stylus/bootstrap';
-
-// CSS import
-@import '../../node_modules/normalize.css/normalize.css';
-```
-
-#### Using Non-CommonJS modules with browserify-shim
-
-Sometimes you need to use libraries that attach themselves to the window object and don't work with browserify very well.
-In this case, you can use a transform called [browserify-shim](https://github.com/thlorenz/browserify-shim).
-
-***Step 1: Install browserify-shim transform for browserify***
-
-Browserify doesn't support Non-CommonJS scripts out of the box (jQuery plugins, window.* libs, etc), but you can install a transform called 'browserify-shim' to remedy that:
-
-```
-npm install --save-dev browserify-shim
-```
-
-***Step 2: Install desired npm package***
-
-Now you can install your desired npm package:
-
-```
-// Example: jQuery plugin
-
-npm install --save slick-carousel
-```
-
-***Step 3: Setup browserify-shim***
-
-Add the following to your `package.json` file:
-
-```json
-"browserify": {
-  "transform": [ "browserify-shim" ]
-},
-"browser": {
-  "slick-carousel": "./node_modules/slick-carousel/slick/slick.js"
-},
-"browserify-shim": {
-  "slick-carousel": {
-    "exports": null,
-    "depends": "jquery:$"
-  }
-},
-```
-> Note: [slick-carousel](http://kenwheeler.github.io/slick/) requires jQuery, hence the `"depends": "jquery:$"`
-
-***Step 4: Import file to your project***
-
-Now you can include your desired module/lib within your `src/_scripts/main.js` file:
-
-```js
-// ES5
-require('slick-carousel');
-
-// ES6
-import 'slick-carousel';
-
-...
-
-$('#someId').slick(); // Activates slick plugin
-```
-
-#### Using Bower
-
-If you can't find your desired package on the NPM registry and you wish to use Bower to manage some front-end packages, you can accomplish this in a couple steps:
-
-***Step 1: Install Bower***
-
-```
-npm install -g bower
-```
-
-***Step2: Create `bower.json`***
-
-Create a `bower.json` file within the root directory of your generated project
-with the following contents:
-
-```json
-{
-  "name": "Sample",
-  "version": "0.0.1",
-  "authors": [
-    "John Doe <john.doe@someurl.com>"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {}
-}
-```
-
-> Note: Be sure to update the name, version, author, etc info to your liking
-
-***Step 3: Install package***
-
-```
-bower install --save [package name]
-```
-
-***Step 4: Use package***
-
-If the package installed is a javascript library, you will need to shim it. Instructions for this are in the [browserify-shim](#using-non-commonjs-modules-with-browserify-shim) section of this README.
-
-If the package is CSS, Sass, Less, or Stylus, you can follow the instructions in the [Stylesheets](#stylesheets) section of this README
 
 ### Data Files
 
@@ -653,7 +512,3 @@ To run unit tests, you have a couple options:
 ## Release History
 
 See [Changelog](https://github.com/larsonjj/generator-yeogurt/blob/master/CHANGELOG.md)
-
-## License
-
-[MIT License](LICENSE.md) - &copy; Jake Larson

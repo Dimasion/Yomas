@@ -4,25 +4,48 @@ include ./_modules/atoms/global/icon/icon
 include ./_modules/atoms/forms/checkbox/checkbox
 include ./_modules/atoms/link/link
 
+block style
+  style.
+    .temporary {
+      text-align: center;
+      //- background: red;
+    }
+    .version {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding: 20px;
+    }
+    .my-component-icon {
+      fill: orange;
+    }
 block content
-  .container
+  .temporary.container
     .yeogurt-info
       h1 Welcome to Yomas!
-      //- Inline svg include
-      !=icon('yomas')
-      //- From sprite include
-      +icon({ class: 'additional-class', icon: 'yomas' })
-
-      //- Checkbox
-      +checkbox({
-        id: 'chk-1',
-        name: 'yomas',
-        text: 'Some text'
-      })
+      p
+        img.logo(src="images/yomas-logo.jpg", width="100px")
+      p
+        b Include SVG:
+        //- Inline svg include
+        !=icon('yomas')
+      p
+        b Include icon component SVG (via sprite):
+        //- From sprite include
+        +icon({ class: 'my-component-icon', icon: 'yomas' })
+      p
+        b Include checkbox component:
+        //- Checkbox
+        +checkbox({
+          id: 'chk-1',
+          name: 'yomas',
+          text: 'Some text'
+        })
+      br
+      p
+        i Clean index.jade file to get started
       p.
         Take a look at the
         #[+link({text: 'documentation'})(href='https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---')]
         and start mixing up something awesome.
-      p
-        img.logo(src="images/yeogurt-swirl.png", width="75px")
   code.version v<%= pkg.version %>

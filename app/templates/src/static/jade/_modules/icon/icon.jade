@@ -2,5 +2,5 @@ mixin icon(spec)
   - spec = spec || {}
   - spec.class = spec.class || ''
 
-  svg(class=spec.class)
+  svg.a-icon(class=spec.class)
    use(xlink:href=baseUrl + 'images/sprite.svg#icon-' + spec.icon)

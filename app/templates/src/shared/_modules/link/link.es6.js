@@ -1,8 +1,8 @@
 export let Link = {
-  classes: {
+  dom: {
     link: '.js-link'
   },
   init () {
-    console.log('Link element: ', $(this.classes.link))
+    console.log('Link element: ', document.querySelector(this.dom.link))
   }
 }

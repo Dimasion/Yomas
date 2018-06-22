@@ -119,5 +119,5 @@
     "preversion": "npm test",
     "test": "istanbul cover _mocha -- test/app/*.test.js test/subgenerators/*.test.js --reporter list --timeout 100000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
-  "version": "0.4.6"
+  "version": "0.5.0"
 }

@@ -171,6 +171,7 @@ Folders relative to the `source` configured directory
 | modules  | Modules folder where all reusable code should live (default location for [module subgenerator](https://github.com/larsonjj/generator-yeogurt#module))
 | layouts  | Layouts folder where all layout templates should live (default location for [layout subgenerator](https://github.com/larsonjj/generator-yeogurt#layout))
 | images   | Images folder where all `.png, jpeg, jpg, svg, gif` files should live
+| icons   | SVG icons folder where .svg icons should live
 
 
 ### Entry files
@@ -425,77 +426,6 @@ Which outputs to:
   <h1>Home</h1>
 </div>
 ```
-
-### Creating a dashboard
-
-Using data files, you can build a nice dashboard for your pages and modules.
-You can add an example dashboard to your Yomas project by going to this [Dashboard Example](https://github.com/larsonjj/yeogurt-dashboard-example) repository
-and following the instructions in the README.md.
-
-> NOTE: Example dashboard only works with Jade currently
-
-### Using SVN
-If you plan on using SVN instead of Git, you will want to setup some default ignores to make sure you aren't committing extraneous/generated files to your codebase. To do this, adhere to the following steps:
-
-#### Step 1
-Create a new file in the root of your project named `.svnignore` and give it the following contents:
-
-```
-node_modules
-*.log
-build
-tmp
-.DS_Store
-```
-
-#### Step 2
-Run the following command:
-
-```
-svn propset svn:ignore -R -F .svnignore .
-```
-
-This command will go through your newly created `.svnignore` file and set the specified files/folders to be ignored by SVN.
-
-
-## Common Issues
-
-### ESLint giving errors for third-party scripts
-##### Typical error message:
-> jQuery is not defined
-
-When adding third-party scripts, you should always import them to your `_scripts/main.js` file (See [Adding third-party libraries](#adding-third-party-libraries)).
-However, if you [shimmed](#using-non-commonjs-modules-with-browserify-shim) the library/package to be global (ex: window.jQuery), ESLint will not know that your new library is defined globally. Thus, giving you errors.
-
-##### Solution
-To remedy this situation, all you need to do is open up your `.eslintrc` file in the root directory of you project, and add your new library name to the `global:` property array:
-
-```
-// .eslintrc
-{
-...
-  globals: {
-    jQuery: true // Tells ESLint that jQuery is defined globally
-  }
-...
-}
-```
-
-## Contributing
-
-Anyone and everyone is welcome to contribute. Please take a moment to
-review the [guidelines for contributing](CONTRIBUTING.md).
-
-* [Bug reports](CONTRIBUTING.md#bugs)
-* [Feature requests](CONTRIBUTING.md#features)
-* [Pull requests](CONTRIBUTING.md#pull-requests)
-
-## Testing Generator
-To run unit tests, you have a couple options:
-
-- `npm test`: This will run all unit tests with Mocha and send the report to [coveralls.io](http://coveralls.io) to be processed. (Don't run this for local testing)
-- `npm run localtest`: This is the same as `npm test` only it doesn't send anything to coveralls.io. (Use this for local testing)
-- `npm run localtest-report`: This is the same as `npm run localtest`, but it also generates an HTML report of the current code coverage.
 
 ## Release History
 

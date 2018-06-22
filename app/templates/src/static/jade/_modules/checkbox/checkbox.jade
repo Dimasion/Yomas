@@ -1,9 +1,9 @@
 mixin checkbox(spec)
   - spec = spec || {}
   - spec.class = spec.class || ''
-  
-  label(class=spec.class for=spec.id).a-checkbox&attributes(attributes)
-    input(id=spec.id type="checkbox" name=spec.name).a-checkbox__input
+
+  label.a-checkbox(class=spec.class for=spec.id)&attributes(attributes)
+    input.a-checkbox__input(id=spec.id type="checkbox" name=spec.name)
     span.a-checkbox__box
       +icon({
         class: 'a-checkbox__icon',

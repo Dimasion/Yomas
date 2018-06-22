@@ -42,16 +42,6 @@ A generator for creating static sites. Helps you harness the power of your favor
 - JavaScript Linting with [ESLint](http://eslint.org/)
 - System Notifications for build errors via [gulp-notify](https://github.com/mikaelbr/gulp-notify)
 
-### Available Options
-
-- Project/Site naming
-- ES6/2015 support using [Babel](https://babeljs.io/)
-- [Less](http://lesscss.org/), [Sass](http://sass-lang.com/) (via [node-sass](https://github.com/andrew/node-sass)), or [Stylus](http://learnboost.github.io/stylus/) for Stylesheets
-- [Jasmine](http://jasmine.github.io/) or [Mocha](http://mochajs.org/) + [Chai](http://chaijs.com/) for JavaScript unit testing
-- [Karma](http://karma-runner.github.io/0.12/index.html) for running unit tests
-- [Jade](http://jade-lang.com/) or [Nunjucks](https://mozilla.github.io/nunjucks/) for templating
-
-
 ## Getting Started
 This generator utilizes [Yeoman](http://yeoman.io/) and [Gulp](http://gulpjs.com/) to scaffold out projects, automate tasks, and manage front-end dependencies respectively. If this is your first time here, it is recommended you [read about these tools](http://yeoman.io/learning/index.html) before proceeding.
 
@@ -80,7 +70,7 @@ If you get any errors and/or you're version(s) are too low, you should run `npm 
 This will install both tools and update them to their latest versions.
 
 
-#### Yeogurt
+#### Yomas
 Now that you have all the needed dependencies, you can install this generator with the following command:
 ```
 npm install -g generator-mas
@@ -95,7 +85,7 @@ When starting a new project, you will want to: open up a terminal/command prompt
 mkdir my-new-project && cd $_
 ```
 
-then, run the Yeogurt generator.
+then, run the Yomas generator.
 
 ```
 yo mas
@@ -125,8 +115,6 @@ Once everything is installed, you will see a project structure like below:
 |   |   └── base.jade
 |   ├── _modules               # Reusable modules
 |   |   └── link
-|   |       ├── __tests__
-|   |       |   └── link.spec.js
 |   |       ├── link.jade
 |   |       ├── link.js
 |   |       └── link.scss

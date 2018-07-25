@@ -1,7 +1,8 @@
-//- <%= atomic ? _.capitalize(atomic) + ': ' + name.toLowerCase() : name.toLowerCase() %> [template] 
+//- <%= atomic ? _.capitalize(atomic) + ': ' + name.toLowerCase() : name.toLowerCase() %> [template]
 
 mixin <%= name.toLowerCase() %>(spec)
-  
+  - spec = spec || {}
+
   div.<%= atomic ? atomic.charAt(0) + '-' + name.toLowerCase() : name.toLowerCase()%>&attributes(attributes)
     div This is an example div for the <%= name.toLowerCase() %> module
 

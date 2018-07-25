@@ -3,11 +3,31 @@ var util = require('util');
 var yeoman = require('yeoman-generator');
 var path = require('path');
 var os = require('os');
+var fs = require('fs')
 var pjson = require(path.join(process.cwd(), './package.json'));
 var config = pjson.config;
 var directories = config.directories;
 
 require('colors');
+
+// String splice polyfill
+if (!String.prototype.splice) {
+  /**
+   * {JSDoc}
+   *
+   * The splice() method changes the content of a string by removing a range of
+   * characters and/or adding new characters.
+   *
+   * @this {String}
+   * @param {number} start Index at which to start changing the string.
+   * @param {number} delCount An integer indicating the number of old chars to remove.
+   * @param {string} newSubStr The String that is spliced in.
+   * @return {string} A new string with the spliced substring.
+   */
+  String.prototype.splice = function(start, delCount, newSubStr) {
+      return this.slice(0, start) + newSubStr + this.slice(start + Math.abs(delCount));
+  };
+}
 
 var ModuleGenerator = module.exports = function ModuleGenerator() {
   // By calling `NamedBase` here, we get the argument to the subgenerator call
@@ -28,12 +48,12 @@ var ModuleGenerator = module.exports = function ModuleGenerator() {
   this.jsFramework = fileJSON.jsFramework;
   this.singlePageApplication = fileJSON.singlePageApplication;
   this.jsOption = fileJSON.jsOption;
-  this.jsPreprocessor = fileJSON.jsPreprocessor;
+  this.jsPreprocessor = 'es6';
   this.jsTemplate = fileJSON.jsTemplate;
-  this.cssOption = fileJSON.cssOption;
-  this.sassSyntax = fileJSON.sassSyntax;
+  this.cssOption = 'sass';
+  this.sassSyntax = 'scss';
   this.testFramework = fileJSON.testFramework;
-  this.htmlOption = fileJSON.htmlOption;
+  this.htmlOption = 'jade';
 
 };
 
@@ -41,9 +61,37 @@ util.inherits(ModuleGenerator, yeoman.generators.NamedBase);
 
 // Prompts
 ModuleGenerator.prototype.ask = function ask() {
+  const mainStyleFilePath = 'src/_styles/main.scss'
   this.atomic = false;
   if (this.options.atomic) {
     this.atomic = this.options.atomic;
+
+    fs.readFile(mainStyleFilePath, 'utf8', (err, data) => {
+      let importString = '@import \'' + this.moduleFile.replace('src', '..').replace(/\\/g, '/') + '\';\n'
+
+      if (data.indexOf(importString) !== -1) {
+        console.log('This module exists in main.scss.'.red);
+        return false
+      }
+      if (this.atomic === 'atom') {
+        fs.writeFile (mainStyleFilePath, data.splice(data.indexOf('//atoms'), 0, importString), function(err) {
+          if (err) throw err;
+          console.log('Added atom import to main.scss file.'.green);
+        });
+      }
+      if (this.atomic === 'molecule') {
+        fs.writeFile (mainStyleFilePath, data.splice(data.indexOf('//molecules'), 0, importString), function(err) {
+          if (err) throw err;
+          console.log('Added molecule import to main.scss file.'.green);
+        });
+      }
+      if (this.atomic === 'organism') {
+        fs.writeFile (mainStyleFilePath, data.splice(data.indexOf('//organisms'), 0, importString), function(err) {
+          if (err) throw err;
+          console.log('Added organism import to main.scss file.'.green);
+        });
+      }
+    })
   }
 
   var moduleDir = config ?
@@ -115,7 +163,7 @@ ModuleGenerator.prototype.files = function files() {
   function _getCssSuffix(cssOption, sassSyntax) {
     var sassSuffix = (sassSyntax === 'sass') ? '.sass' : '.scss'
 
-    var _result = '.less';
+    var _result = '.scss';
     _result = (cssOption === 'sass') ? sassSuffix : _result;
     _result = (cssOption === 'stylus') ? '.styl' : _result;
 
